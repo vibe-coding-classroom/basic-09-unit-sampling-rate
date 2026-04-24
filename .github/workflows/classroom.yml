@@ -19,18 +19,28 @@ jobs:
         with:
           node-version: '16'
 
-      - name: Run logic tests (JS)
-        run: node tests/verify_logic.js
+      - name: Verify Logic (JS)
+        uses: education/autograding-command-grader@v1
+        id: verify-logic
+        with:
+          test-name: verify-logic
+          setup-command: npm install # if needed, though not here
+          command: node tests/verify_logic.js
+          timeout: 10
 
-      - name: Run filter tests (C++)
-        run: |
-          g++ tests/test_filter.cpp -o filter_test
-          ./filter_test
+      - name: Filter Test (C++)
+        uses: education/autograding-command-grader@v1
+        id: filter-test
+        with:
+          test-name: filter-test
+          setup-command: g++ tests/test_filter.cpp -o filter_test
+          command: ./filter_test
+          timeout: 10
 
       - name: Autograding Reporter
         uses: education/autograding-grading-reporter@v1
         env:
-          VERIFY-LOGIC_RESULTS: ${{ steps.run-logic-tests.outputs.result }}
-          FILTER-TEST_RESULTS: ${{ steps.run-filter-tests.outputs.result }}
+          VERIFY-LOGIC_RESULTS: ${{steps.verify-logic.outputs.result}}
+          FILTER-TEST_RESULTS: ${{steps.filter-test.outputs.result}}
         with:
           runners: verify-logic,filter-test
