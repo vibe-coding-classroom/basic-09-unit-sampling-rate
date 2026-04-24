@@ -37,6 +37,11 @@ try {
     testMinification();
     console.log('\n✅ All tests passed!');
 } catch (e) {
-    console.error('\n❌ Tests failed:', e.message);
+    console.error('\n❌ Tests failed!');
+    console.error('Message:', e.message);
+    if (e.actual !== undefined) {
+        console.error('Actual:', e.actual);
+        console.error('Expected:', e.expected);
+    }
     process.exit(1);
 }
