@@ -19,12 +19,18 @@ jobs:
         with:
           node-version: '16'
 
-      - name: Run logic tests
+      - name: Run logic tests (JS)
         run: node tests/verify_logic.js
+
+      - name: Run filter tests (C++)
+        run: |
+          g++ tests/test_filter.cpp -o filter_test
+          ./filter_test
 
       - name: Autograding Reporter
         uses: education/autograding-grading-reporter@v1
         env:
           VERIFY-LOGIC_RESULTS: ${{ steps.run-logic-tests.outputs.result }}
+          FILTER-TEST_RESULTS: ${{ steps.run-filter-tests.outputs.result }}
         with:
-          runners: verify-logic
+          runners: verify-logic,filter-test

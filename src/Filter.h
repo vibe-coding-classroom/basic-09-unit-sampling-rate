@@ -1,7 +1,12 @@
 #ifndef FILTER_H
 #define FILTER_H
 
+#ifdef ARDUINO
 #include <Arduino.h>
+#else
+#include <stddef.h>
+#include <stdint.h>
+#endif
 
 /**
  * @brief Moving Average Filter using a FIFO Circular Buffer
