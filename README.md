@@ -1,5 +1,3 @@
-Viewed basic-09-unit-sampling-rate.html:1-382
-
 針對 **`basic-09-unit-sampling-rate` (數據流與取樣率 Sampling Rate)** 單元，這是學員從「數位代碼」跨入「數位訊號處理 (DSP)」的進階基礎課程。它要求學員掌握 **取樣定理 (Nyquist-Shannon)** 的實務應用，學習如何透過頻率管理平衡「操控流暢度」與「硬體頻寬限制」，並利用「滑動平均濾波 (SMA)」在噪聲與延遲之間尋找工程最優解。
 
 以下是在 **GitHub Classroom** 部署其作業 (Assignments) 的具體建議：
