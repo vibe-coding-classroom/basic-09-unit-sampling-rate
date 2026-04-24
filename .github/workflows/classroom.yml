@@ -24,9 +24,10 @@ jobs:
         id: verify-logic
         with:
           test-name: verify-logic
-          setup-command: npm install # if needed, though not here
+          setup-command: npm install
           command: node tests/verify_logic.js
           timeout: 10
+          max-score: 50
 
       - name: Filter Test (C++)
         uses: education/autograding-command-grader@v1
@@ -36,6 +37,7 @@ jobs:
           setup-command: g++ tests/test_filter.cpp -o filter_test
           command: ./filter_test
           timeout: 10
+          max-score: 50
 
       - name: Autograding Reporter
         uses: education/autograding-grading-reporter@v1
