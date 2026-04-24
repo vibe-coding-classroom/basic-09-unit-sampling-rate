@@ -24,7 +24,6 @@ jobs:
         id: verify-logic
         with:
           test-name: verify-logic
-          setup-command: npm install
           command: node tests/verify_logic.js
           timeout: 10
           max-score: 50
